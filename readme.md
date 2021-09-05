@@ -1,7 +1,7 @@
 # Личный проект «Типотека» [![Build status][travis-image]][travis-url]
 
 * Студент: [Jenny B](https://up.htmlacademy.ru/nodejs/3/user/206693).
-* Наставник: [Юрий Кучма](https://htmlacademy.ru/profile/krabaton)..
+* Наставник: [Юрий Кучма](https://htmlacademy.ru/profile/krabaton).
 
 ---
 
