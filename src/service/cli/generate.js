@@ -60,11 +60,11 @@ const getRandomInt = (min, max) => {
 }
 
 const getRandomDate = () => {
-  const today = new Date(Date.now());
-  const fromDay = new Date(2021, 6, 1);;
-  const randomDate = new Date(getRandomInt(today, fromDay));
-  console.log(randomDate);
-  return randomDate;
+  const toDate = new Date();
+  const fromDate = new Date().setMonth(toDate.getMonth() - 3);
+  const randomDate = new Date(getRandomInt(fromDate, toDate)).toISOString();
+
+  return `${randomDate.substr(0, 10)} ${randomDate.substr(11, 8)}`
 }
 
 const generatePublications = (count) => {
@@ -82,8 +82,9 @@ const generatePublications = (count) => {
       createdDate: getRandomDate(),
       category: category,
     });
-    return publications;
   }
+
+  return publications;
 }
 
 module.exports = {
