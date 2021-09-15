@@ -1,5 +1,6 @@
 'use strict';
 
+const chalk = require(`chalk`);
 const fs = require("fs");
 
 const DEFAULT_COUNT = 1;
@@ -92,7 +93,7 @@ module.exports = {
   run(params) {
     const count = Number(params[0]) || DEFAULT_COUNT;
     if (count > MAX_COUNT) {
-      throw new Error(`Не больше ${MAX_COUNT} объявлений`);
+      throw new Error(chalk.red(`Не больше ${MAX_COUNT} объявлений`));
     }
     const json = JSON.stringify(generatePublications(count), null, 4);
 
