@@ -25,13 +25,13 @@ const getRandomDate = () => {
   return `${randomDate.substr(0, 10)} ${randomDate.substr(11, 8)}`
 }
 
-const generatePublications = (count) => {
+const generatePublications = (count, titles, categories, announce) => {
   const publications = [];
 
   for (let i = 0; i < count; i++) {
-    const title = TITLES[getRandomInt(0, TITLES.length - 1)];
-    const announce = ANNOUNCE[getRandomInt(0, ANNOUNCE.length - 1)];
-    const category = CATEGORY[getRandomInt(0, CATEGORY.length - 1)];
+    const title = titles[getRandomInt(0, titles.length - 1)];
+    const announce = announce[getRandomInt(0, announce.length - 1)];
+    const category = categories[getRandomInt(0, categories.length - 1)];
 
     publications.push({
       title: title,
