@@ -1,7 +1,7 @@
 'use strict';
 
 const chalk = require(`chalk`);
-const fs = require(`fs`).promises;
+const fsPromises = require(`fs`).promises;
 
 const FILE_ANNOUNCE_PATH = `./data/sentences.txt`;
 const FILE_TITLES_PATH = `./data/titles.txt`;
@@ -45,6 +45,16 @@ const generatePublications = (count) => {
   return publications;
 }
 
+const readContent = async (filePath) => {
+  try {
+    const content = await fsPromises.readFile(filePath, `utf8`);
+    return content.trim().split(`\n`);
+  } catch (err) {
+    console.error(chalk.red(err));
+    return [];
+  }
+};
+
 module.exports = {
   name: `--generate`,
   async run(params) {
@@ -54,7 +64,7 @@ module.exports = {
     }
     const json = JSON.stringify(generatePublications(count), null, 4);
     try {
-      await fs.writeFile(FILE_NAME, json);
+      await fsPromises.writeFile(FILE_NAME, json);
       console.log(chalk.green(`Operation success. File created.`));
     } catch (err) {
       console.error(chalk.red(`Can't write data to file...`));
