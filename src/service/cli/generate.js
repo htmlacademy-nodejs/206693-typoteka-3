@@ -3,7 +3,7 @@
 const chalk = require(`chalk`);
 const fsPromises = require(`fs`).promises;
 
-const FILE_ANNOUNCE_PATH = `./data/sentences.txt`;
+const FILE_ANNOUNCE_PATH = `./data/announce.txt`;
 const FILE_TITLES_PATH = `./data/titles.txt`;
 const FILE_CATEGORIES_PATH = `./data/categories.txt`;
 
@@ -25,13 +25,23 @@ const getRandomDate = () => {
   return `${randomDate.substr(0, 10)} ${randomDate.substr(11, 8)}`
 }
 
-const generatePublications = (count, titles, categories, announce) => {
+const readContent = async (filePath) => {
+  try {
+    const content = await fsPromises.readFile(filePath, `utf8`);
+    return content.trim().split(`\n`);
+  } catch (err) {
+    console.error(chalk.red(err));
+    return [];
+  }
+};
+
+const generatePublications = (count, titleList, announceList, categoryList) => {
   const publications = [];
 
   for (let i = 0; i < count; i++) {
-    const title = titles[getRandomInt(0, titles.length - 1)];
-    const announce = announce[getRandomInt(0, announce.length - 1)];
-    const category = categories[getRandomInt(0, categories.length - 1)];
+    const title = titleList[getRandomInt(0, titleList.length - 1)];
+    const announce = announceList[getRandomInt(0, announceList.length - 1)];
+    const category = categoryList[getRandomInt(0, categoryList.length - 1)];
 
     publications.push({
       title: title,
@@ -45,24 +55,19 @@ const generatePublications = (count, titles, categories, announce) => {
   return publications;
 }
 
-const readContent = async (filePath) => {
-  try {
-    const content = await fsPromises.readFile(filePath, `utf8`);
-    return content.trim().split(`\n`);
-  } catch (err) {
-    console.error(chalk.red(err));
-    return [];
-  }
-};
-
 module.exports = {
   name: `--generate`,
   async run(params) {
     const count = Number(params[0]) || DEFAULT_COUNT;
+    const titles = await readContent(FILE_TITLES_PATH);
+    const announce = await readContent(FILE_ANNOUNCE_PATH);
+
+    const categories = await readContent(FILE_CATEGORIES_PATH);
+
     if (count > MAX_COUNT) {
       throw new Error(chalk.red(`Не больше ${MAX_COUNT} объявлений`));
     }
-    const json = JSON.stringify(generatePublications(count), null, 4);
+    const json = JSON.stringify(generatePublications(count, titles, announce, categories), null, 4);
     try {
       await fsPromises.writeFile(FILE_NAME, json);
       console.log(chalk.green(`Operation success. File created.`));
