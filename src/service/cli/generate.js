@@ -48,7 +48,10 @@ async function generatePublications(count) {
 }
 
 function parseData(source) {
-  return source.trim().split(`\n`);
+  return source
+    .split(`\n`)
+    .map(line => line.trim())
+    .filter(line => line.length !== 0);
 }
 
 function formatOutput(publications) {
