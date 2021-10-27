@@ -1,13 +1,13 @@
 'use strict';
 const chalk = require(`chalk`);
 const {getRandomInt, getRandomDate, readFile, writeFile} = require('../../utils');
+const {MOCKS_FILE_NAME} = require("../../constants");
 
 const FILE_ANNOUNCE_PATH = `./data/announce.txt`;
 const FILE_TITLES_PATH = `./data/titles.txt`;
 const FILE_CATEGORIES_PATH = `./data/categories.txt`;
 const DEFAULT_COUNT = 1;
 const MAX_COUNT = 1000;
-const FILE_NAME = `mocks.json`;
 
 module.exports = {
   name: `--generate`,
@@ -15,8 +15,7 @@ module.exports = {
     const count = validationParams(params);
     const publications = await generatePublications(count);
     const output = formatOutput(publications);
-
-    await writeFile(FILE_NAME, output);
+    await writeFile(MOCKS_FILE_NAME, output);
   }
 };
 
