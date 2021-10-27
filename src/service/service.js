@@ -2,6 +2,7 @@
 
 const chalk = require(`chalk`);
 const {Cli} = require(`./cli`);
+const {validationCommand} = require("../utils");
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -20,4 +21,3 @@ if (!Cli[command]) {
 }
 
 Cli[command].run(params);
-// process.exit(0);

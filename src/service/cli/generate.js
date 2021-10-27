@@ -12,11 +12,7 @@ const FILE_NAME = `mocks.json`;
 module.exports = {
   name: `--generate`,
   async run(params) {
-    const count = Number(params[0]) || DEFAULT_COUNT;
-    if (count > MAX_COUNT) {
-      throw new Error(chalk.red(`Не больше ${MAX_COUNT} объявлений`));
-    }
-
+    const count = validationParams(params);
     const publications = await generatePublications(count);
     const output = formatOutput(publications);
 
@@ -45,6 +41,14 @@ async function generatePublications(count) {
   }
 
   return publications;
+}
+
+function validationParams(param) {
+  const count = Number(param[0]) || DEFAULT_COUNT;
+  if (count > MAX_COUNT) {
+    throw new Error(chalk.red(`Не больше ${MAX_COUNT} объявлений`));
+  }
+  return count;
 }
 
 function parseData(source) {
