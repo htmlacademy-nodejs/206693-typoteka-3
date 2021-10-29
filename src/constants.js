@@ -1,6 +1,5 @@
 'use strict';
-
-module.exports.HttpCode = {
+module.exports.HTTP_CODE = {
   OK: 200,
   NOT_FOUND: 404,
   INTERNAL_SERVER_ERROR: 500,
@@ -10,8 +9,7 @@ module.exports.HttpCode = {
 
 module.exports.DEFAULT_PORT = 3000;
 module.exports.MOCKS_FILE_NAME = `mocks.json`;
-
-module.exports.templateHelpCommand = `
+module.exports.TEMPLATE_HELP_COMMAND = `
 Программа запускает http-сервер и формирует файл с данными для API.
 
 Гайд:

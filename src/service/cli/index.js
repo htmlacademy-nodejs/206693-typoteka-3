@@ -1,5 +1,4 @@
 'use strict';
-
 const version = require(`./version.js`);
 const help = require(`./help.js`);
 const generate = require(`./generate.js`);

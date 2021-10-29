@@ -1,5 +1,4 @@
 'use strict';
-
 const chalk = require(`chalk`);
 const {Cli} = require(`./cli`);
 
