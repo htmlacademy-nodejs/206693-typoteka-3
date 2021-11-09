@@ -1,13 +1,13 @@
 'use strict';
 const chalk = require(`chalk`);
 const {getRandomInt, getRandomDate, readFile, writeFile} = require('../../utils');
-const {MOCKS_FILE_NAME} = require("../../constants");
-
-const FILE_ANNOUNCE_PATH = `./data/announce.txt`;
-const FILE_TITLES_PATH = `./data/titles.txt`;
-const FILE_CATEGORIES_PATH = `./data/categories.txt`;
-const DEFAULT_COUNT = 1;
-const MAX_COUNT = 1000;
+const {
+  MOCKS_FILE_NAME,
+  DEFAULT_COUNT_OF_PUBLICATIONS,
+  MAX_COUNT_OF_PUBLICATIONS,
+  FILE_ANNOUNCE_PATH,
+  FILE_TITLES_PATH,
+  FILE_CATEGORIES_PATH} = require("../../constants");
 
 module.exports = {
   name: `--generate`,
@@ -43,9 +43,9 @@ async function generatePublications(count) {
 }
 
 function validationParams(param) {
-  const count = Number(param[0]) || DEFAULT_COUNT;
-  if (count > MAX_COUNT) {
-    throw new Error(chalk.red(`Не больше ${MAX_COUNT} объявлений`));
+  const count = Number(param[0]) || DEFAULT_COUNT_OF_PUBLICATIONS;
+  if (count > MAX_COUNT_OF_PUBLICATIONS) {
+    throw new Error(chalk.red(`Не больше ${MAX_COUNT_OF_PUBLICATIONS} объявлений`));
   }
   return count;
 }
