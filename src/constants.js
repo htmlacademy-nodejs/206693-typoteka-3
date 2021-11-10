@@ -8,7 +8,7 @@ const HTTP_CODE = {
   UNAUTHORIZED: 401,
 };
 
-const DEFAULT_PORT = 3000;
+const DEFAULT_PORT = 8080;
 
 const MOCKS_FILE_NAME = `mocks.json`;
 
