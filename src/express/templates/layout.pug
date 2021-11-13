@@ -10,8 +10,9 @@ head
   link(rel='preload' href='../src/express/public/fonts/SFProDisplay-Regular.woff2' as='font' crossorigin='anonymous')
   link(rel='stylesheet' href='../src/express/public/css/style.min.css')
 body
-  block header
-  block content
-  block footer
+  .wrapper
+    block header
+    block content
+    block footer
   script(src='/js/vendor.js')
   script(src='/js/main.js')
