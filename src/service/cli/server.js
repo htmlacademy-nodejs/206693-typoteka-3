@@ -1,8 +1,8 @@
 'use strict';
 const chalk = require(`chalk`);
 const http = require(`http`);
-const {DEFAULT_PORT, HTTP_CODE, MOCKS_FILE_NAME} = require("../../constants");
-const {readFile} = require("../../utils");
+const {DEFAULT_PORT, HTTP_CODE, MOCKS_FILE_NAME} = require(`../../constants`);
+const {readFile} = require(`../../utils`);
 
 module.exports = {
   name: `--server`,

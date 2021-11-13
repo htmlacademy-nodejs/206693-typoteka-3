@@ -1,13 +1,13 @@
 'use strict';
 const chalk = require(`chalk`);
-const {getRandomInt, getRandomDate, readFile, writeFile} = require('../../utils');
+const {getRandomInt, getRandomDate, readFile, writeFile} = require(`../../utils`);
 const {
   MOCKS_FILE_NAME,
   DEFAULT_COUNT_OF_PUBLICATIONS,
   MAX_COUNT_OF_PUBLICATIONS,
   FILE_ANNOUNCE_PATH,
   FILE_TITLES_PATH,
-  FILE_CATEGORIES_PATH} = require("../../constants");
+  FILE_CATEGORIES_PATH} = require(`../../constants`);
 
 module.exports = {
   name: `--generate`,
@@ -33,9 +33,9 @@ async function generatePublications(count) {
     publications.push({
       title: title,
       announce: announce,
-      fullText: title + ' ' + announce,
+      fullText: title + ` ` + announce,
       createdDate: getRandomDate(),
-      category: category,
+      category: category
     });
   }
 

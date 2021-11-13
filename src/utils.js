@@ -13,7 +13,7 @@ function getRandomDate() {
   const fromDate = new Date().setMonth(toDate.getMonth() - 3);
   const randomDate = new Date(getRandomInt(fromDate, toDate)).toISOString();
 
-  return `${randomDate.substr(0, 10)} ${randomDate.substr(11, 8)}`
+  return `${randomDate.substr(0, 10)} ${randomDate.substr(11, 8)}`;
 }
 
 async function readFile(path) {
@@ -21,7 +21,7 @@ async function readFile(path) {
     return await fs.readFile(path, `utf8`);
   } catch (err) {
     console.error(chalk.red(err));
-    return "";
+    return ``;
   }
 }
 
@@ -39,6 +39,6 @@ module.exports = {
   getRandomDate,
   readFile,
   writeFile,
-}
+};
 
 

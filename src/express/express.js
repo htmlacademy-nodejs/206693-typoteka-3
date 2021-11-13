@@ -4,7 +4,7 @@ const express = require(`express`);
 const {DEFAULT_PORT, PUBLIC_DIR} = require(`../constants`);
 const articlesRoutes = require(`./routes/articles-routes`);
 const myRoutes = require(`./routes/my-routes`);
-const path = require("path");
+const path = require(`path`);
 const app = express();
 
 app.use(express.static(path.resolve(__dirname, PUBLIC_DIR)));
