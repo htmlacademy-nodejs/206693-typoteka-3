@@ -7,7 +7,7 @@ const HTTP_CODE = {
   FORBIDDEN: 403,
   UNAUTHORIZED: 401,
 };
-
+const PUBLIC_DIR = 'public';
 const DEFAULT_PORT = 8080;
 
 const MOCKS_FILE_NAME = `mocks.json`;
@@ -32,6 +32,7 @@ service.js <command>
 
 module.exports = {
   HTTP_CODE,
+  PUBLIC_DIR,
   DEFAULT_PORT,
   MOCKS_FILE_NAME,
   FILE_ANNOUNCE_PATH,
