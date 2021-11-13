@@ -20,4 +20,9 @@ app.get(`/categories`, (req, res) => res.render(`all-categories`));
 app.use(`/articles`, articlesRoutes);
 app.use(`/my`, myRoutes);
 
-app.listen(DEFAULT_PORT);
+app.listen(DEFAULT_PORT, (error) => {
+  if (error) {
+    return console.error(`Error: ${error.message}`);
+  }
+  return console.info(`Listen to port: ${DEFAULT_PORT}`);
+});
