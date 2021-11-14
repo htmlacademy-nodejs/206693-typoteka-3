@@ -15,7 +15,7 @@ app.set(`view engine`, `pug`);
 app.get(`/`, (req, res) => res.render(`main`));
 app.get(`/register`, (req, res) => res.render(`sign-up`));
 app.get(`/login`, (req, res) => res.render(`login`));
-app.get(`/search`, (req, res) => res.send(`/search`));
+app.get(`/search`, (req, res) => res.render(`search`));
 app.get(`/categories`, (req, res) => res.render(`all-categories`));
 app.use(`/articles`, articlesRoutes);
 app.use(`/my`, myRoutes);
