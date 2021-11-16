@@ -60,4 +60,3 @@ function sendResponse(response, statusCode, message) {
 
   response.end(template);
 }
-
