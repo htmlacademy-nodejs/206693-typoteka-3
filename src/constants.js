@@ -8,11 +8,9 @@ const HTTP_CODE = {
   FORBIDDEN: 403,
   UNAUTHORIZED: 401,
 };
-const PUBLIC_DIR = `public`;
 
 module.exports = {
   MOCKS_FILE_NAME,
   DEFAULT_PORT,
   HTTP_CODE,
-  PUBLIC_DIR,
 };

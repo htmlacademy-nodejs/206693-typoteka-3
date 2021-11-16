@@ -1,7 +1,7 @@
 'use strict';
 const express = require(`express`);
 const path = require(`path`);
-const {DEFAULT_PORT, PUBLIC_DIR} = require(`../constants`);
+const {DEFAULT_PORT} = require(`../constants`);
 const mainRouter = require(`./routers/main-router`);
 const articlesRouter = require(`./routers/articles-router`);
 const myRouter = require(`./routers/my-router`);
@@ -10,6 +10,7 @@ const loginRouter = require(`./routers/login-router`);
 const searchRouter = require(`./routers/search-router`);
 const categoriesRouter = require(`./routers/categories-router`);
 const errorsRouter = require(`./routers/errors-router`);
+const PUBLIC_DIR = `public`;
 
 const app = express();
 app.set(`views`, path.resolve(__dirname, `templates`));
