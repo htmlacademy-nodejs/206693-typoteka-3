@@ -17,5 +17,5 @@ service.js <command>
 --version:          выводит номер версии
 --help:             печатает этот текст
 --generate <count>  формирует файл mocks.json
---server:           запускает http-сервер
+--server <port>     запускает http-сервер
 `;
