@@ -24,10 +24,9 @@ const MAX_COMMENTS = 4;
 module.exports = {
   name: `--generate`,
   async run(params) {
-    const count = validationParams(params);
-    const publications = await generatePublications(count);
-    const output = formatOutput(publications);
-    await writeFile(MOCKS_FILE_NAME, output);
+    const publicationNumber = ensurePublicationNumberParam(params);
+    const publications = await generatePublications(publicationNumber);
+    await writeJsonFile(publications, MOCKS_FILE_NAME)
   }
 };
 
@@ -74,7 +73,12 @@ function generateComments(count, comments) {
   return result;
 }
 
-function validationParams(param) {
+async function writeJsonFile(data, fileName){
+  const str = JSON.stringify(data, null, 4);
+  await writeFile(fileName, str);
+}
+
+function ensurePublicationNumberParam(param) {
   const count = Number(param[0]) || DEFAULT_COUNT_OF_PUBLICATIONS;
   if (count > MAX_COUNT_OF_PUBLICATIONS) {
     throw new Error(chalk.red(`Не больше ${MAX_COUNT_OF_PUBLICATIONS} объявлений`));
