@@ -7,7 +7,8 @@ const {
   getRandomDate,
   readFile,
   writeFile,
-  randomlySwapAllElements} = require(`../../utils`);
+  randomlySwapAllElements
+} = require(`../../utils`);
 
 const {MOCKS_FILE_NAME,} = require(`../../constants`);
 const FILE_ANNOUNCE_PATH = `./data/announce.txt`;
@@ -32,10 +33,13 @@ module.exports = {
 
 async function generatePublications(count) {
   const publications = [];
-  const titleList = parseData(await readFile(FILE_TITLES_PATH));
-  const announceList = parseData(await readFile(FILE_ANNOUNCE_PATH));
-  const categoryList = parseData(await readFile(FILE_CATEGORIES_PATH));
-  const commentList = parseData(await readFile(FILE_COMMENTS_PATH));
+
+  const [titleList, announceList, categoryList, commentList] = await Promise.all([
+    readTitlesFromFile(),
+    readAnnouncesFromFile(),
+    readCategoriesFromFile(),
+    readCommentsFromFile(),
+  ]);
 
   for (let i = 0; i < count; i++) {
     const title = titleList[getRandomInt(0, titleList.length - 1)];
@@ -58,13 +62,16 @@ async function generatePublications(count) {
 }
 
 function generateComments(count, comments) {
-  return (
-    Array(count).fill({}).map(() => ({
+  const result = [];
+  for (let i = 0; i < count; i++) {
+    result.push({
       id: nanoid(MAX_ID_LENGTH),
       text: randomlySwapAllElements(comments)
         .slice(0, getRandomInt(1, 3))
         .join(` `),
-    })));
+    });
+  }
+  return result;
 }
 
 function validationParams(param) {
@@ -73,6 +80,26 @@ function validationParams(param) {
     throw new Error(chalk.red(`Не больше ${MAX_COUNT_OF_PUBLICATIONS} объявлений`));
   }
   return count;
+}
+
+async function readTitlesFromFile() {
+  const str = await readFile(FILE_TITLES_PATH);
+  return parseData(str);
+}
+
+async function readAnnouncesFromFile() {
+  const str = await readFile(FILE_ANNOUNCE_PATH);
+  return parseData(str);
+}
+
+async function readCategoriesFromFile() {
+  const str = await readFile(FILE_CATEGORIES_PATH);
+  return parseData(str);
+}
+
+async function readCommentsFromFile() {
+  const str = await readFile(FILE_COMMENTS_PATH);
+  return parseData(str);
 }
 
 function parseData(source) {
