@@ -112,7 +112,3 @@ function parseData(source) {
     .map(line => line.trim())
     .filter(line => line.length !== 0);
 }
-
-function formatOutput(publications) {
-  return JSON.stringify(publications, null, 4);
-}
