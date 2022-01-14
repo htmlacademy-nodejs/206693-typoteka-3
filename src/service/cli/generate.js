@@ -50,7 +50,7 @@ async function generatePublications(count) {
       id: nanoid(MAX_ID_LENGTH),
       title: title,
       announce: announce,
-      fullText: title + ` ` + announce,
+      fullText: `${title} ${announce}`,
       createdDate: getRandomDate(),
       category: category,
       comment: comment,
