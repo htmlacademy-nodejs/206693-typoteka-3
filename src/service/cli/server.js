@@ -7,10 +7,12 @@ const postsRoutes = require(`./routers/posts-router`);
 module.exports = {
   name: `--server`,
   run(portArg) {
-    const port = validatePort(portArg);
+    const port = ensurePort(portArg);
     const app = express();
+
     app.use(express.json());
     app.use(`/posts`, postsRoutes);
+
     app.listen(port, (error) => {
       if (error) {
         console.error(chalk.red(error));
@@ -21,6 +23,7 @@ module.exports = {
   }
 };
 
-function validatePort(port) {
+function ensurePort(port) {
   return Number(port[0]) || DEFAULT_PORT;
 }
+

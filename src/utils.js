@@ -21,7 +21,7 @@ async function readFile(path) {
     return await fs.readFile(path, `utf8`);
   } catch (err) {
     console.error(chalk.red(err));
-    return ``;
+    return ``; //TODO ???
   }
 }
 

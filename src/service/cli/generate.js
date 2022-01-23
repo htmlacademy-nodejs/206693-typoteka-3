@@ -10,7 +10,7 @@ const {
   randomlySwapAllElements
 } = require(`../../utils`);
 
-const {MOCKS_FILE_NAME,} = require(`../../constants`);
+const {MOCKS_FILE_NAME} = require(`../../constants`);
 const FILE_ANNOUNCE_PATH = `./data/announce.txt`;
 const FILE_TITLES_PATH = `./data/titles.txt`;
 const FILE_CATEGORIES_PATH = `./data/categories.txt`;
