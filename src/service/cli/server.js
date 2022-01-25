@@ -2,16 +2,23 @@
 const express = require(`express`);
 const chalk = require(`chalk`);
 const {DEFAULT_PORT} = require(`../../constants`);
-const postsRoutes = require(`./routers/posts-router`);
+const createCategoryRouter = require("../routers/category-router");
+const {CategoryService} = require("../data-service");
+const MocksProvider = require("../lib/MocksProvider");
+const {MOCKS_FILE_NAME} = require("../../constants");
 
 module.exports = {
   name: `--server`,
-  run(portArg) {
+  async run(portArg) {
+    //TODO вынести все в одну функцию
     const port = ensurePort(portArg);
     const app = express();
+    const mocksProvider = new MocksProvider(MOCKS_FILE_NAME);
+    const mockData = await mocksProvider.getMockData();
+    const categoryService = new CategoryService(mockData);
 
     app.use(express.json());
-    app.use(`/posts`, postsRoutes);
+    createCategoryRouter(app, categoryService)
 
     app.listen(port, (error) => {
       if (error) {
