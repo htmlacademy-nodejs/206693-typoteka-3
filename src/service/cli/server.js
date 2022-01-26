@@ -2,10 +2,11 @@
 const express = require(`express`);
 const chalk = require(`chalk`);
 const {DEFAULT_PORT} = require(`../../constants`);
-const createCategoryRouter = require("../routers/category-router");
-const {CategoryService} = require("../data-service");
 const MocksProvider = require("../lib/MocksProvider");
 const {MOCKS_FILE_NAME} = require("../../constants");
+const {CategoryService, ArticleService} = require("../data-service");
+const createArticleRouter = require("../routers/article-router");
+const createCategoryRouter = require("../routers/category-router");
 
 module.exports = {
   name: `--server`,
@@ -16,9 +17,11 @@ module.exports = {
     const mocksProvider = new MocksProvider(MOCKS_FILE_NAME);
     const mockData = await mocksProvider.getMockData();
     const categoryService = new CategoryService(mockData);
+    const articleService = new ArticleService(mockData);
 
     app.use(express.json());
     createCategoryRouter(app, categoryService)
+    createArticleRouter(app, articleService)
 
     app.listen(port, (error) => {
       if (error) {
