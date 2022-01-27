@@ -2,6 +2,7 @@
 const {Router} = require('express');
 const {HTTP_CODE} = require('../../constants');
 const validateArticle = require('../middlewares/validate-article');
+const validateComment = require('../middlewares/validate-comment');
 
 function createArticleRouter(app, articleService) {
   const articlesRouter = new Router();
@@ -55,10 +56,9 @@ function createArticleRouter(app, articleService) {
     res.end();
   });
 
-  articlesRouter.post(`/:articleId/comments`, (req, res) => {
+  articlesRouter.post(`/:articleId/comments`, validateComment, (req, res) => {
     const articleId = req.params.articleId;
     const commentData = req.body;
-    console.log(articleId, commentData)
     res.status(HTTP_CODE.OK);
     res.end();
   })
