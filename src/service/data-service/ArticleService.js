@@ -22,23 +22,14 @@ class ArticleService {
   }
 
   create(articleData) {
-    const article = {
+    this._articles.push({
       id: nanoid(MAX_ID_LENGTH),
       ...articleData
-    };
-    this._articles.push(article);
+    });
   }
 
   update(id, articleData) {
-    for (let i = 0; i < this._articles.length; i++) {
-      if (this._articles[i].id === id) {
-        this._articles[i] = {
-          ...this._articles[i],
-          ...articleData
-        };
-        return;
-      }
-    }
+    this._articles = this._articles.map(article => article.id === id ? {...article, ...articleData} : article);
   }
 
   delete(id) {
