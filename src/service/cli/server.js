@@ -7,6 +7,7 @@ const {MOCKS_FILE_NAME} = require('../../constants');
 const {CategoryService, ArticleService} = require('../data-service');
 const createArticleRouter = require('../routers/article-router');
 const createCategoryRouter = require('../routers/category-router');
+const createSearchRouter = require('../routers/search-router');
 
 module.exports = {
   name: '--server',
@@ -20,8 +21,9 @@ module.exports = {
     const articleService = new ArticleService(mockData);
 
     app.use(express.json());
-    createCategoryRouter(app, categoryService)
-    createArticleRouter(app, articleService)
+    createCategoryRouter(app, categoryService);
+    createArticleRouter(app, articleService);
+    createSearchRouter(app, articleService);
 
     app.listen(port, (error) => {
       if (error) {
