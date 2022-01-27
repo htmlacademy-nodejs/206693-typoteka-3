@@ -6,22 +6,22 @@ const validateArticle = require("../middlewares/validate-article");
 function createArticleRouter(app, articleService) {
   const articlesRouter = new Router();
 
-  articlesRouter.get(`/`, async (req, res) => {
-    const articles = await articleService.findAll();
+  articlesRouter.get(`/`, (req, res) => {
+    const articles = articleService.findAll();
     res.status(HTTP_CODE.OK);
     res.json(articles);
   });
 
-  articlesRouter.get(`/:articleId`, async (req, res) => {
+  articlesRouter.get(`/:articleId`, (req, res) => {
     const articleId = req.params.articleId;
-    const article = await articleService.findById(articleId);
+    const article = articleService.findById(articleId);
     res.status(HTTP_CODE.OK);
     res.json(article);
   });
 
-  articlesRouter.get(`/:articleId/comments`, async (req, res) => {
+  articlesRouter.get(`/:articleId/comments`, (req, res) => {
     const articleId = req.params.articleId;
-    const comments = await articleService.findCommentsFor(articleId);
+    const comments = articleService.findCommentsFor(articleId);
     res.status(HTTP_CODE.OK);
     res.json(comments);
   });
@@ -31,6 +31,14 @@ function createArticleRouter(app, articleService) {
     res.status(HTTP_CODE.OK);
     res.end();
   })
+
+  articlesRouter.put(`/:articleId`, validateArticle, (req, res) => {
+    const articleId = req.params.articleId;
+    const articleData = req.body;
+    articleService.update(articleId, articleData);
+    res.status(HTTP_CODE.OK);
+    res.end();
+  });
 
   app.use(`/articles`, articlesRouter);
 }
