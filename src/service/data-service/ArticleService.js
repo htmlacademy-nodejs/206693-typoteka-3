@@ -40,6 +40,10 @@ class ArticleService {
       }
     }
   }
+
+  delete(id) {
+    this._articles = this._articles.filter(article => article.id !== id);
+  }
 }
 
 

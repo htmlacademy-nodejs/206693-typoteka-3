@@ -40,6 +40,13 @@ function createArticleRouter(app, articleService) {
     res.end();
   });
 
+  articlesRouter.delete(`/:articleId`, (req, res) => {
+    const articleId = req.params.articleId;
+    articleService.delete(articleId);
+    res.status(HTTP_CODE.OK);
+    res.end();
+  });
+
   app.use(`/articles`, articlesRouter);
 }
 
