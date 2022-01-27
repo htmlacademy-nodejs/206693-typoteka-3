@@ -47,6 +47,14 @@ function createArticleRouter(app, articleService) {
     res.end();
   });
 
+  articlesRouter.delete(`/:articleId/comments/:commentId`, (req, res) => {
+    const articleId = req.params.articleId;
+    const commentId = req.params.commentId;
+    articleService.deleteCommentById(articleId, commentId);
+    res.status(HTTP_CODE.OK);
+    res.end();
+  });
+
   app.use(`/articles`, articlesRouter);
 }
 

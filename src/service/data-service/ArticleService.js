@@ -35,6 +35,11 @@ class ArticleService {
   delete(id) {
     this._articles = this._articles.filter(article => article.id !== id);
   }
+
+  deleteCommentById(articleId, commentId) {
+    const article = this.findById(articleId);
+    article.comment = article.comment.filter(comment => comment.id !== commentId);
+  }
 }
 
 
