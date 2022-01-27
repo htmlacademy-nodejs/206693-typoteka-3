@@ -1,10 +1,12 @@
 'use strict';
 
+const {MAX_ID_LENGTH} = require("../../constants");
+const {nanoid} = require("nanoid");
+
 class ArticleService {
 
   constructor(articles) {
     this._articles = articles;
-    this._articlesById = null;
   }
 
   findAll() {
@@ -12,21 +14,19 @@ class ArticleService {
   }
 
   findById(id) {
-    this.ensureCache();
-    return this._articlesById[id];
+    return this._articles.find(article => article.id === id);
   }
 
   findCommentsFor(id) {
     return this.findById(id).comment;
   }
 
-  ensureCache() {
-    if (!this._articlesById) {
-      this._articlesById = {};
-      for (const article of this._articles) {
-        this._articlesById[article.id] = article;
-      }
-    }
+  create(articleData) {
+    const article = {
+      id: nanoid(MAX_ID_LENGTH),
+      ...articleData
+    };
+    this._articles.push(article);
   }
 }
 

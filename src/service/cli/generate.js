@@ -10,7 +10,7 @@ const {
   randomlySwapAllElements
 } = require(`../../utils`);
 
-const {MOCKS_FILE_NAME} = require(`../../constants`);
+const {MOCKS_FILE_NAME, MAX_ID_LENGTH} = require(`../../constants`);
 const FILE_ANNOUNCE_PATH = `./data/announce.txt`;
 const FILE_TITLES_PATH = `./data/titles.txt`;
 const FILE_CATEGORIES_PATH = `./data/categories.txt`;
@@ -18,7 +18,6 @@ const FILE_COMMENTS_PATH = `./data/comments.txt`;
 
 const DEFAULT_COUNT_OF_PUBLICATIONS = 1;
 const MAX_COUNT_OF_PUBLICATIONS = 1000;
-const MAX_ID_LENGTH = 6;
 const MAX_COMMENTS = 4;
 
 module.exports = {

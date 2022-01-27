@@ -27,7 +27,8 @@ function createArticleRouter(app, articleService) {
   });
 
   articlesRouter.post(`/`, validateArticle, (req, res) => {
-    console.log('ok');
+    articleService.create(req.body);
+    res.status(HTTP_CODE.OK);
     res.end();
   })
 

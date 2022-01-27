@@ -10,9 +10,11 @@ const HTTP_CODE = {
   NOT_FOUND: 404,
   INTERNAL_SERVER_ERROR: 500,
 };
+const MAX_ID_LENGTH = 6;
 
 module.exports = {
   MOCKS_FILE_NAME,
   DEFAULT_PORT,
   HTTP_CODE,
+  MAX_ID_LENGTH,
 };
