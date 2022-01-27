@@ -48,6 +48,10 @@ class ArticleService {
       ...commentData
     });
   }
+
+  searchFor(query) {
+    return this._articles.filter(article => article.title.includes(query));
+  }
 }
 
 

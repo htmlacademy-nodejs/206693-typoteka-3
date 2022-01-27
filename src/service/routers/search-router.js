@@ -6,8 +6,9 @@ function createSearchRouter(app, articleService) {
 
   searchRouter.get(`/`, (req, res) => {
     const searchQuery = req.query.query;
+    const result = articleService.searchFor(searchQuery);
     res.status(HTTP_CODE.OK);
-    res.end();
+    res.json(result);
   });
 
   app.use(`/search`, searchRouter);
