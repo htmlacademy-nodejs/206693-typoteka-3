@@ -40,6 +40,14 @@ class ArticleService {
     const article = this.findById(articleId);
     article.comment = article.comment.filter(comment => comment.id !== commentId);
   }
+
+  addComment(articleId, commentData) {
+    const article = this.findById(articleId);
+    article.comment.push({
+      id: nanoid(MAX_ID_LENGTH),
+      ...commentData
+    });
+  }
 }
 
 

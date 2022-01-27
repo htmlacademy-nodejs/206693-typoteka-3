@@ -59,6 +59,7 @@ function createArticleRouter(app, articleService) {
   articlesRouter.post(`/:articleId/comments`, validateComment, (req, res) => {
     const articleId = req.params.articleId;
     const commentData = req.body;
+    articleService.addComment(articleId, commentData);
     res.status(HTTP_CODE.OK);
     res.end();
   })
