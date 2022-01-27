@@ -1,6 +1,7 @@
 'use strict';
 const {Router} = require(`express`);
 const {HTTP_CODE} = require("../../constants");
+const validateArticle = require("../middlewares/validate-article");
 
 function createArticleRouter(app, articleService) {
   const articlesRouter = new Router();
@@ -24,6 +25,11 @@ function createArticleRouter(app, articleService) {
     res.status(HTTP_CODE.OK);
     res.json(comments);
   });
+
+  articlesRouter.post(`/`, validateArticle, (req, res) => {
+    console.log('ok');
+    res.end();
+  })
 
   app.use(`/articles`, articlesRouter);
 }
