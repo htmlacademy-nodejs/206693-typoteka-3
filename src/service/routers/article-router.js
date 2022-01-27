@@ -1,7 +1,7 @@
 'use strict';
-const {Router} = require(`express`);
-const {HTTP_CODE} = require("../../constants");
-const validateArticle = require("../middlewares/validate-article");
+const {Router} = require('express');
+const {HTTP_CODE} = require('../../constants');
+const validateArticle = require('../middlewares/validate-article');
 
 function createArticleRouter(app, articleService) {
   const articlesRouter = new Router();

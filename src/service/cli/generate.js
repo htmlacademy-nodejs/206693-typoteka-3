@@ -1,6 +1,6 @@
 'use strict';
-const chalk = require(`chalk`);
-const {nanoid} = require(`nanoid`);
+const chalk = require('chalk');
+const {nanoid} = require('nanoid');
 
 const {
   getRandomInt,
@@ -8,20 +8,20 @@ const {
   readFile,
   writeFile,
   randomlySwapAllElements
-} = require(`../../utils`);
+} = require('../../utils');
 
-const {MOCKS_FILE_NAME, MAX_ID_LENGTH} = require(`../../constants`);
-const FILE_ANNOUNCE_PATH = `./data/announce.txt`;
-const FILE_TITLES_PATH = `./data/titles.txt`;
-const FILE_CATEGORIES_PATH = `./data/categories.txt`;
-const FILE_COMMENTS_PATH = `./data/comments.txt`;
+const {MOCKS_FILE_NAME, MAX_ID_LENGTH} = require('../../constants');
+const FILE_ANNOUNCE_PATH = './data/announce.txt';
+const FILE_TITLES_PATH = './data/titles.txt';
+const FILE_CATEGORIES_PATH = './data/categories.txt';
+const FILE_COMMENTS_PATH = './data/comments.txt';
 
 const DEFAULT_COUNT_OF_PUBLICATIONS = 1;
 const MAX_COUNT_OF_PUBLICATIONS = 1000;
 const MAX_COMMENTS = 4;
 
 module.exports = {
-  name: `--generate`,
+  name: '--generate',
   async run(params) {
     const publicationNumber = ensurePublicationNumberParam(params);
     const publications = await generatePublications(publicationNumber);

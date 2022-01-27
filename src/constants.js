@@ -1,5 +1,5 @@
 'use strict';
-const MOCKS_FILE_NAME = `mocks.json`;
+const MOCKS_FILE_NAME = 'mocks.json';
 const DEFAULT_PORT = 8080;
 const HTTP_CODE = {
   OK: 200,

@@ -1,6 +1,6 @@
 'use strict';
-const chalk = require(`chalk`);
-const fs = require(`fs`).promises;
+const chalk = require('chalk');
+const fs = require('fs').promises;
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -18,7 +18,7 @@ function getRandomDate() {
 
 async function readFile(path) {
   try {
-    return await fs.readFile(path, `utf8`);
+    return await fs.readFile(path, 'utf8');
   } catch (err) {
     console.error(chalk.red(err));
     return ``; //TODO ???
@@ -28,9 +28,9 @@ async function readFile(path) {
 async function writeFile(path, content) {
   try {
     await fs.writeFile(path, content);
-    console.log(chalk.green(`Operation success. File created.`));
+    console.log(chalk.green('Operation success. File created.'));
   } catch (err) {
-    console.error(chalk.red(`Can't write data to file...`));
+    console.error(chalk.red('Can`t write data to file...'));
   }
 }
 

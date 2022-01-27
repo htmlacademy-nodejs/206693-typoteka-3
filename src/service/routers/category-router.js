@@ -1,6 +1,6 @@
 'use strict';
-const {Router} = require(`express`);
-const {HTTP_CODE} = require("../../constants");
+const {Router} = require('express');
+const {HTTP_CODE} = require('../../constants');
 
 function createCategoryRouter(app, categoryService) {
   const categoriesRouter = new Router();

@@ -1,15 +1,15 @@
 'use strict';
-const express = require(`express`);
-const chalk = require(`chalk`);
-const {DEFAULT_PORT} = require(`../../constants`);
-const MocksProvider = require("../lib/MocksProvider");
-const {MOCKS_FILE_NAME} = require("../../constants");
-const {CategoryService, ArticleService} = require("../data-service");
-const createArticleRouter = require("../routers/article-router");
-const createCategoryRouter = require("../routers/category-router");
+const express = require('express');
+const chalk = require('chalk');
+const {DEFAULT_PORT} = require('../../constants');
+const MocksProvider = require('../lib/MocksProvider');
+const {MOCKS_FILE_NAME} = require('../../constants');
+const {CategoryService, ArticleService} = require('../data-service');
+const createArticleRouter = require('../routers/article-router');
+const createCategoryRouter = require('../routers/category-router');
 
 module.exports = {
-  name: `--server`,
+  name: '--server',
   async run(portArg) {
     //TODO вынести все в одну функцию
     const port = ensurePort(portArg);

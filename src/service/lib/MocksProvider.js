@@ -1,5 +1,5 @@
 'use strict';
-const fs = require("fs").promises;
+const fs = require('fs').promises;
 
 class MocksProvider {
   #mocksFilePath = null;
@@ -18,7 +18,7 @@ class MocksProvider {
 
   async readMocksFile(mocksFilePath) {
     try {
-      return await fs.readFile(mocksFilePath, `utf8`);
+      return await fs.readFile(mocksFilePath, 'utf8');
     } catch (err) {
       throw new Error(`Cannot read the mock data file: ${mocksFilePath}`);
     }

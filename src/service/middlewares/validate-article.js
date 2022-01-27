@@ -1,6 +1,6 @@
 'use strict';
 
-const {HTTP_CODE} = require("../../constants");
+const {HTTP_CODE} = require('../../constants');
 
 function validateArticle(req, res, next) {
   const article = req.body;
@@ -14,7 +14,7 @@ function validateArticle(req, res, next) {
 }
 
 function validateTitle(article) {
-  return typeof article.title === "string" && article.title.length >= 30 && article.title.length <= 250;
+  return typeof article.title === 'string' && article.title.length >= 30 && article.title.length <= 250;
 }
 
 function validateAnnounce(article) {
