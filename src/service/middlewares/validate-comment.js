@@ -1,14 +1,14 @@
 'use strict';
 
-const {HTTP_CODE} = require("../../constants");
+const {HTTP_CODE} = require('../../constants');
 
 function validateComment(req, res, next) {
   const comment = req.body;
-  if (!validateCommentText(comment)) {
+  if (validateCommentText(comment)) {
+    next();
+  } else {
     res.status(HTTP_CODE.BAD_REQUEST);
     res.end();
-  } else {
-    next();
   }
 }
 

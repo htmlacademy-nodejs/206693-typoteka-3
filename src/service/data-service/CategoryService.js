@@ -1,13 +1,12 @@
 'use strict';
-class CategoryService {
-  #categories = null;
 
+class CategoryService {
   constructor(publications) {
-    this.#categories = publications.map(publication => publication.category);
+    this._categories = publications.map(publication => publication.category);
   }
 
   findAll() {
-    return this.#categories;
+    return this._categories;
   }
 }
 

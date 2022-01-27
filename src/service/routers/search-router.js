@@ -1,5 +1,7 @@
-const {Router} = require("express");
-const {HTTP_CODE} = require("../../constants");
+'use strict';
+
+const {Router} = require('express');
+const {HTTP_CODE} = require('../../constants');
 
 function createSearchRouter(app, articleService) {
   const searchRouter = new Router();

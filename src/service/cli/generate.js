@@ -1,4 +1,5 @@
 'use strict';
+
 const chalk = require('chalk');
 const {nanoid} = require('nanoid');
 
@@ -72,7 +73,7 @@ function generateComments(count, comments) {
   return result;
 }
 
-async function writeJsonFile(data, fileName){
+async function writeJsonFile(data, fileName) {
   const str = JSON.stringify(data, null, 4);
   await writeFile(fileName, str);
 }

@@ -1,4 +1,5 @@
 'use strict';
+
 const {Router} = require('express');
 const {HTTP_CODE} = require('../../constants');
 const validateArticle = require('../middlewares/validate-article');

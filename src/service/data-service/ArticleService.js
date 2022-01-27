@@ -4,7 +4,6 @@ const {MAX_ID_LENGTH} = require('../../constants');
 const {nanoid} = require('nanoid');
 
 class ArticleService {
-
   constructor(articles) {
     this._articles = articles;
   }

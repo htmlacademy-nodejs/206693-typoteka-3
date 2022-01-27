@@ -5,11 +5,11 @@ const {HTTP_CODE} = require('../../constants');
 function validateArticle(req, res, next) {
   const article = req.body;
 
-  if (!validateTitle(article) || !validateAnnounce(article) || !validateFullText(article) || !validateCategory(article)) {
+  if (validateTitle(article) && validateAnnounce(article) && validateFullText(article) && validateCategory(article)) {
+    next();
+  } else {
     res.status(HTTP_CODE.BAD_REQUEST);
     res.end();
-  } else {
-    next();
   }
 }
 
