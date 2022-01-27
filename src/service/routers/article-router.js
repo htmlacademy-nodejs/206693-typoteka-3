@@ -55,6 +55,14 @@ function createArticleRouter(app, articleService) {
     res.end();
   });
 
+  articlesRouter.post(`/:articleId/comments`, (req, res) => {
+    const articleId = req.params.articleId;
+    const commentData = req.body;
+    console.log(articleId, commentData)
+    res.status(HTTP_CODE.OK);
+    res.end();
+  })
+
   app.use(`/articles`, articlesRouter);
 }
 
