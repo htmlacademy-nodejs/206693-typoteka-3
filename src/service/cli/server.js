@@ -39,4 +39,3 @@ module.exports = {
 function ensurePort(port) {
   return Number(port[0]) || DEFAULT_PORT;
 }
-

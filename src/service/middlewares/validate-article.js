@@ -36,5 +36,4 @@ function isCategoryValid(article) {
   return !!article.category;
 }
 
-
 module.exports = validateArticle;

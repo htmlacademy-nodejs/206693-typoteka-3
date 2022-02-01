@@ -16,14 +16,9 @@ class ArticleService {
     return this._articles.find(article => article.id === id);
   }
 
-  findCommentsByArticleId(id) {
-    return this.findById(id).comment;
-  }
-
   create(articleData) {
     this._articles.push({
-      id: nanoid(MAX_ID_LENGTH),
-      ...articleData
+      id: nanoid(MAX_ID_LENGTH), ...articleData
     });
   }
 
@@ -35,23 +30,25 @@ class ArticleService {
     this._articles = this._articles.filter(article => article.id !== id);
   }
 
-  deleteCommentById(articleId, commentId) {
-    const article = this.findById(articleId);
-    article.comment = article.comment.filter(comment => comment.id !== commentId);
+  findCommentsByArticleId(id) {
+    return this.findById(id).comment;
   }
 
   addComment(articleId, commentData) {
     const article = this.findById(articleId);
     article.comment.push({
-      id: nanoid(MAX_ID_LENGTH),
-      ...commentData
+      id: nanoid(MAX_ID_LENGTH), ...commentData
     });
+  }
+
+  deleteCommentById(articleId, commentId) {
+    const article = this.findById(articleId);
+    article.comment = article.comment.filter(comment => comment.id !== commentId);
   }
 
   searchFor(query) {
     return this._articles.filter(article => article.title.includes(query));
   }
 }
-
 
 module.exports = ArticleService;
