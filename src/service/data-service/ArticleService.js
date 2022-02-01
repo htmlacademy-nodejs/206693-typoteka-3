@@ -16,7 +16,7 @@ class ArticleService {
     return this._articles.find(article => article.id === id);
   }
 
-  findCommentsFor(id) {
+  findCommentsByArticleId(id) {
     return this.findById(id).comment;
   }
 

@@ -23,7 +23,7 @@ function createArticleRouter(app, articleService) {
 
   articlesRouter.get(`/:articleId/comments`, (req, res) => {
     const articleId = req.params.articleId;
-    const comments = articleService.findCommentsFor(articleId);
+    const comments = articleService.findCommentsByArticleId(articleId);
     res.status(HTTP_CODE.OK);
     res.json(comments);
   });

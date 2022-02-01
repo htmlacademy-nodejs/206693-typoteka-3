@@ -1,11 +1,11 @@
 'use strict';
 
 const {HTTP_CODE} = require('../../constants');
+const MIN_TITLE_LENGTH = 30;
+const MAX_TITLE_LENGTH = 250;
 
 function validateArticle(req, res, next) {
-  const article = req.body;
-
-  if (validateTitle(article) && validateAnnounce(article) && validateFullText(article) && validateCategory(article)) {
+  if (isArticleValid(req.body)) {
     next();
   } else {
     res.status(HTTP_CODE.BAD_REQUEST);
@@ -13,19 +13,26 @@ function validateArticle(req, res, next) {
   }
 }
 
-function validateTitle(article) {
-  return typeof article.title === 'string' && article.title.length >= 30 && article.title.length <= 250;
+function isArticleValid(article) {
+  return isTitleValid(article) && isAnnounceValid(article) && isFullTextValid(article) && isCategoryValid(article);
 }
 
-function validateAnnounce(article) {
+function isTitleValid(article) {
+  const title = article.title;
+  const isString = typeof title === 'string';
+  const hasAcceptableLength = title.length >= MIN_TITLE_LENGTH && title.length <= MAX_TITLE_LENGTH;
+  return isString && hasAcceptableLength;
+}
+
+function isAnnounceValid(article) {
   return !!article.announce;
 }
 
-function validateFullText(article) {
+function isFullTextValid(article) {
   return !!article.fullText;
 }
 
-function validateCategory(article) {
+function isCategoryValid(article) {
   return !!article.category;
 }
 
