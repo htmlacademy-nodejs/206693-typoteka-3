@@ -1,7 +1,7 @@
 # Личный проект «Типотека» [![Build status][travis-image]][travis-url]
 
 * Студент: [Jenny B](https://up.htmlacademy.ru/nodejs/3/user/206693).
-* Наставник: [Сергей Вохмянин](https://htmlacademy.ru/profile/id530823).
+* Наставник: [Вадим Осюков](https://htmlacademy.ru/profile/id1411353).
 
 ---
 
