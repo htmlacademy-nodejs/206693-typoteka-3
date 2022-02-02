@@ -1,6 +1,6 @@
 'use strict';
 
-const {HTTP_CODE} = require('../../constants');
+const {HTTP_CODE} = require('../../../constants');
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 250;
 

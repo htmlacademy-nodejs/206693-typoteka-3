@@ -6,9 +6,9 @@ const {DEFAULT_PORT} = require('../../constants');
 const MocksProvider = require('../lib/MocksProvider');
 const {MOCKS_FILE_NAME} = require('../../constants');
 const {CategoryService, ArticleService} = require('../data-service');
-const createArticleRouter = require('../routers/article-router');
-const createCategoryRouter = require('../routers/category-router');
-const createSearchRouter = require('../routers/search-router');
+const createArticleRouter = require('../api/article/article-router');
+const createCategoryRouter = require('../api/category/category-router');
+const createSearchRouter = require('../api/search/search-router');
 
 module.exports = {
   name: '--server',

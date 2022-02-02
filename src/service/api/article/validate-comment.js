@@ -1,6 +1,6 @@
 'use strict';
 
-const {HTTP_CODE} = require('../../constants');
+const {HTTP_CODE} = require('../../../constants');
 
 function validateComment(req, res, next) {
   const comment = req.body;
