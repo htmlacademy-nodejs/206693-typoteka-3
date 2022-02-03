@@ -1,15 +1,17 @@
 {
   "name": "typoteka-3",
   "version": "1.0.0",
+  "type": "module",
   "description": "Типотека",
-  "main": "./src/service/service.js",
+  "main": "src/api/service.js",
   "scripts": {
     "test": "npm run eslint && npm run jest",
     "jest": "jest",
     "eslint": "eslint --ext .js src/",
-    "start": "nodemon ./src/service/service.js",
-    "start-front-server": "node ./src/express/express.js",
-    "dev-server": "nodemon ./src/express/express.js"
+    "start": "nodemon src/api/service.js",
+    "start-web-app": "node src/web-app/main.js",
+    "generate-mocks": "node src/mock-generator/index.js 5 6 mocks.json",
+    "dev-server": "nodemon src/web-app/main.js"
   },
   "repository": {
     "type": "git",

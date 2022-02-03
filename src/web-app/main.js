@@ -1,5 +1,5 @@
 'use strict';
-const express = require('express');
+const main = require('express');
 const path = require('path');
 const {DEFAULT_PORT} = require('../constants');
 const mainRouter = require('./routers/main-router');
@@ -12,11 +12,11 @@ const categoriesRouter = require('./routers/categories-router');
 const errorsRouter = require('./routers/errors-router');
 const PUBLIC_DIR = 'public';
 
-const app = express();
+const app = main();
 app.set('views', path.resolve(__dirname, 'templates'));
 app.set('view engine', 'pug');
 
-app.use(express.static(path.resolve(__dirname, PUBLIC_DIR)));
+app.use(main.static(path.resolve(__dirname, PUBLIC_DIR)));
 app.use(`/`, mainRouter);
 app.use(`/articles`, articlesRouter);
 app.use(`/my`, myRouter);
