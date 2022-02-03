@@ -45,10 +45,6 @@ class ArticleService {
     const article = this.findById(articleId);
     article.comment = article.comment.filter(comment => comment.id !== commentId);
   }
-
-  searchFor(query) {
-    return this._articles.filter(article => article.title.includes(query));
-  }
 }
 
 module.exports = ArticleService;

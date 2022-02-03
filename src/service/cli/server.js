@@ -5,7 +5,9 @@ const chalk = require('chalk');
 const {DEFAULT_PORT} = require('../../constants');
 const MocksProvider = require('../lib/MocksProvider');
 const {MOCKS_FILE_NAME} = require('../../constants');
-const {CategoryService, ArticleService} = require('../data-service');
+const CategoryService = require('../api/category/CategoryService');
+const ArticleService = require('../api/article/ArticleService');
+const SearchService = require('../api/search/SearchService');
 const createArticleRouter = require('../api/article/article-router');
 const createCategoryRouter = require('../api/category/category-router');
 const createSearchRouter = require('../api/search/search-router');
@@ -20,11 +22,12 @@ module.exports = {
     const mockData = await mocksProvider.getMockData();
     const categoryService = new CategoryService(mockData);
     const articleService = new ArticleService(mockData);
+    const searchService = new SearchService(mockData);
 
     app.use(express.json());
     createCategoryRouter(app, categoryService);
     createArticleRouter(app, articleService);
-    createSearchRouter(app, articleService);
+    createSearchRouter(app, searchService);
 
     app.listen(port, (error) => {
       if (error) {
