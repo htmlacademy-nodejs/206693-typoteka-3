@@ -1,8 +1,8 @@
 'use strict';
 
-const {HTTP_CODE} = require('../../../constants');
+import {HTTP_CODE} from '../../../constants';
 
-function validateComment(req, res, next) {
+export function validateComment(req, res, next) {
   const comment = req.body;
   if (validateCommentText(comment)) {
     next();
@@ -15,5 +15,3 @@ function validateComment(req, res, next) {
 function validateCommentText(comment) {
   return typeof comment.text === 'string' && comment.text.length > 0;
 }
-
-module.exports = validateComment;

@@ -13,7 +13,7 @@ const HTTP_CODE = {
 };
 const MAX_ID_LENGTH = 6;
 
-module.exports = {
+export {
   MOCKS_FILE_NAME,
   DEFAULT_PORT,
   HTTP_CODE,

@@ -1,9 +1,9 @@
 'use strict';
 
-const {Router} = require('express');
-const {HTTP_CODE} = require('../../../constants');
+import {Router} from 'express';
+import {HTTP_CODE} from '../../../constants.js';
 
-function createSearchRouter(app, searchService) {
+export function createSearchRouter(app, searchService) {
   const searchRouter = new Router();
 
   searchRouter.get(`/`, (req, res) => {
@@ -15,5 +15,3 @@ function createSearchRouter(app, searchService) {
 
   app.use(`/search`, searchRouter);
 }
-
-module.exports = createSearchRouter;

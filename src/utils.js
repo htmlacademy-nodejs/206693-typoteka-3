@@ -1,7 +1,6 @@
 'use strict';
-
-const chalk = require('chalk');
-const fs = require('fs').promises;
+import chalk from 'chalk';
+import fs from "fs/promises";
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);

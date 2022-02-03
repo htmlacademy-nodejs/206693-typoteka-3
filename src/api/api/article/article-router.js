@@ -1,11 +1,11 @@
 'use strict';
 
-const {Router} = require('express');
-const {HTTP_CODE} = require('../../../constants');
-const validateArticle = require('./validate-article');
-const validateComment = require('./validate-comment');
+import {Router} from 'express';
+import {HTTP_CODE} from '../../../constants';
+import {validateArticle} from './validate-article';
+import {validateComment} from './validate-comment';
 
-function createArticleRouter(app, articleService) {
+export function createArticleRouter(app, articleService) {
   const articlesRouter = new Router();
 
   articlesRouter.get(`/`, (req, res) => {
@@ -67,5 +67,3 @@ function createArticleRouter(app, articleService) {
 
   app.use(`/articles`, articlesRouter);
 }
-
-module.exports = createArticleRouter;

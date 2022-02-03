@@ -1,13 +1,6 @@
 'use strict';
 
-const chalk = require('chalk');
-
-module.exports = {
-  name: '--help',
-  run() {
-    console.log(chalk.gray(TEMPLATE_HELP_COMMAND));
-  }
-};
+import chalk from 'chalk';
 
 const TEMPLATE_HELP_COMMAND = `
 Программа запускает http-сервер и формирует файл с данными для API.
@@ -20,3 +13,10 @@ service.js <command>
 --generate <count>  формирует файл mocks.json
 --server <port>     запускает http-сервер
 `;
+
+export const helpCommand = {
+  name: '--help',
+  run() {
+    console.log(chalk.gray(TEMPLATE_HELP_COMMAND));
+  }
+};

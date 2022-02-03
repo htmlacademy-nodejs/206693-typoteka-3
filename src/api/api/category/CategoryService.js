@@ -1,6 +1,6 @@
 'use strict';
 
-class CategoryService {
+export class CategoryService {
   constructor(publications) {
     this._categories = publications.map(publication => publication.category);
   }
@@ -9,5 +9,3 @@ class CategoryService {
     return this._categories;
   }
 }
-
-module.exports = CategoryService;

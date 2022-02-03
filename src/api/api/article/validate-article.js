@@ -1,10 +1,11 @@
 'use strict';
 
-const {HTTP_CODE} = require('../../../constants');
+import {HTTP_CODE} from '../../../constants';
+
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 250;
 
-function validateArticle(req, res, next) {
+export function validateArticle(req, res, next) {
   if (isArticleValid(req.body)) {
     next();
   } else {
@@ -35,5 +36,3 @@ function isFullTextValid(article) {
 function isCategoryValid(article) {
   return !!article.category;
 }
-
-module.exports = validateArticle;

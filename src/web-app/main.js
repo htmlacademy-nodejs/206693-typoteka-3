@@ -1,15 +1,16 @@
 'use strict';
-const main = require('express');
-const path = require('path');
-const {DEFAULT_PORT} = require('../constants');
-const mainRouter = require('./routers/main-router');
-const articlesRouter = require('./routers/articles-router');
-const myRouter = require('./routers/my-router');
-const registerRouter = require('./routers/register-router');
-const loginRouter = require('./routers/login-router');
-const searchRouter = require('./routers/search-router');
-const categoriesRouter = require('./routers/categories-router');
-const errorsRouter = require('./routers/errors-router');
+
+import main from 'express';
+import path from 'path';
+import DEFAULT_PORT from '../constants.js'
+import mainRouter from './routers/main-router';
+import articlesRouter from './routers/articles-router';
+import myRouter from './routers/my-router';
+import registerRouter from './routers/register-router';
+import loginRouter from './routers/login-router';
+import searchRouter from './routers/search-router';
+import categoriesRouter from './routers/categories-router';
+import errorsRouter from './routers/errors-router';
 const PUBLIC_DIR = 'public';
 
 const app = main();

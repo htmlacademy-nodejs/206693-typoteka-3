@@ -1,6 +1,6 @@
 'use strict';
 
-class SearchService {
+export class SearchService {
   constructor(articles) {
     this._articles = articles;
   }
@@ -9,5 +9,3 @@ class SearchService {
     return this._articles.filter(article => article.title.includes(query));
   }
 }
-
-module.exports = SearchService;

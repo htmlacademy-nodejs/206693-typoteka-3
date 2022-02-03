@@ -1,13 +1,13 @@
 'use strict';
 
-const version = require('./version.js');
-const help = require('./help.js');
-const generate = require('./generate.js');
-const server = require('./server.js');
+import {versionCommand} from './version.js';
+import {helpCommand} from './help.js';
+import {generateMocksCommand} from './generate.js';
+import {runServerCommand} from './server.js';
 
-module.exports.Cli = {
-  [version.name]: version,
-  [help.name]: help,
-  [generate.name]: generate,
-  [server.name]: server,
+export const Cli = {
+  [versionCommand.name]: versionCommand,
+  [helpCommand.name]: helpCommand,
+  [generateMocksCommand.name]: generateMocksCommand,
+  [runServerCommand.name]: runServerCommand,
 };

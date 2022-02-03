@@ -1,9 +1,9 @@
 'use strict';
 
-const {MAX_ID_LENGTH} = require('../../../constants');
-const {nanoid} = require('nanoid');
+import {MAX_ID_LENGTH} from '../../../constants';
+import {nanoid} from 'nanoid';
 
-class ArticleService {
+export class ArticleService {
   constructor(articles) {
     this._articles = articles;
   }
@@ -46,5 +46,3 @@ class ArticleService {
     article.comment = article.comment.filter(comment => comment.id !== commentId);
   }
 }
-
-module.exports = ArticleService;

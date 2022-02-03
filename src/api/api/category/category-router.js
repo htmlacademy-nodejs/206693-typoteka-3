@@ -1,9 +1,9 @@
 'use strict';
 
-const {Router} = require('express');
-const {HTTP_CODE} = require('../../../constants');
+import {Router} from 'express';
+import {HTTP_CODE} from '../../../constants.js';
 
-function createCategoryRouter(app, categoryService) {
+export function createCategoryRouter(app, categoryService) {
   const categoriesRouter = new Router();
 
   categoriesRouter.get(`/`, async (req, res) => {
@@ -14,5 +14,3 @@ function createCategoryRouter(app, categoryService) {
 
   app.use(`/categories`, categoriesRouter);
 }
-
-module.exports = createCategoryRouter;

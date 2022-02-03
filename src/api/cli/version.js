@@ -1,9 +1,11 @@
 'use strict';
 
-const chalk = require('chalk');
-const packageJson = require('../../../package.json');
+import chalk from 'chalk';
+import fs from 'fs';
 
-module.exports = {
+const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
+
+export const versionCommand = {
   name: '--version',
   run() {
     console.info(chalk.blue(packageJson.version));

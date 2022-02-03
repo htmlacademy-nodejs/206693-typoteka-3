@@ -1,8 +1,8 @@
 'use strict';
 
-const fs = require('fs').promises;
+import fs from 'fs/promises';
 
-class MocksProvider {
+export class MocksProvider {
   #mocksFilePath = null;
   #mocks = null;
 
@@ -33,5 +33,3 @@ class MocksProvider {
     }
   }
 }
-
-module.exports = MocksProvider;

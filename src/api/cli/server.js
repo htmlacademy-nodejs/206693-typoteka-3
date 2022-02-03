@@ -1,18 +1,20 @@
 'use strict';
 
-const express = require('express');
-const chalk = require('chalk');
-const {DEFAULT_PORT} = require('../../constants');
-const MocksProvider = require('../lib/MocksProvider');
-const {MOCKS_FILE_NAME} = require('../../constants');
-const CategoryService = require('../api/category/CategoryService');
-const ArticleService = require('../api/article/ArticleService');
-const SearchService = require('../api/search/SearchService');
-const createArticleRouter = require('../api/article/article-router');
-const createCategoryRouter = require('../api/category/category-router');
-const createSearchRouter = require('../api/search/search-router');
+import express from 'express';
+import chalk from 'chalk';
 
-module.exports = {
+import {MocksProvider} from '../lib/MocksProvider.js';
+import {CategoryService} from '../api/category/CategoryService.js';
+import {ArticleService} from '../api/article/ArticleService.js';
+import {SearchService} from '../api/search/SearchService.js';
+
+import {createArticleRouter} from '../api/article/article-router.js';
+import {createCategoryRouter} from '../api/category/category-router.js';
+import {createSearchRouter} from '../api/search/search-router.js';
+
+import {DEFAULT_PORT, MOCKS_FILE_NAME} from '../../constants.js';
+
+export const runServerCommand = {
   name: '--server',
   async run(portArg) {
     //TODO вынести все в одну функцию
