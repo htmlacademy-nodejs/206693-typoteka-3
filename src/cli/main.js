@@ -1,7 +1,7 @@
 'use strict';
 
 import chalk from 'chalk';
-import {Cli} from './cli/index.js';
+import {Cli} from './Cli.js';
 
 const args = process.argv.slice(2);
 const command = args[0];

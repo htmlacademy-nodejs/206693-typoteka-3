@@ -1,5 +1,3 @@
-'use strict';
-
 export class CategoryService {
   constructor(publications) {
     this._categories = publications.map(publication => publication.category);

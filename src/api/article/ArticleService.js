@@ -1,6 +1,4 @@
-'use strict';
-
-import {MAX_ID_LENGTH} from '../../../constants';
+import {MAX_ID_LENGTH} from '../../constants.js';
 import {nanoid} from 'nanoid';
 
 export class ArticleService {

@@ -1,5 +1,3 @@
-'use strict';
-
 import fs from 'fs/promises';
 
 export class MocksProvider {

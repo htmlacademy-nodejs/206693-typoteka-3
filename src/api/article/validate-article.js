@@ -1,6 +1,4 @@
-'use strict';
-
-import {HTTP_CODE} from '../../../constants';
+import {constants as HTTP_CODES} from 'http2';
 
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 250;
@@ -9,7 +7,7 @@ export function validateArticle(req, res, next) {
   if (isArticleValid(req.body)) {
     next();
   } else {
-    res.status(HTTP_CODE.BAD_REQUEST);
+    res.status(HTTP_CODES.HTTP_STATUS_BAD_REQUEST);
     res.end();
   }
 }

@@ -3,18 +3,18 @@
 import express from 'express';
 import chalk from 'chalk';
 
-import {MocksProvider} from '../lib/MocksProvider.js';
-import {CategoryService} from '../api/category/CategoryService.js';
-import {ArticleService} from '../api/article/ArticleService.js';
-import {SearchService} from '../api/search/SearchService.js';
+import {MocksProvider} from '../../api/mocks/MocksProvider.js';
+import {CategoryService} from '../../api/category/CategoryService.js';
+import {ArticleService} from '../../api/article/ArticleService.js';
+import {SearchService} from '../../api/search/SearchService.js';
 
-import {createArticleRouter} from '../api/article/article-router.js';
-import {createCategoryRouter} from '../api/category/category-router.js';
-import {createSearchRouter} from '../api/search/search-router.js';
+import {createArticleRouter} from '../../api/article/article-router.js';
+import {createCategoryRouter} from '../../api/category/category-router.js';
+import {createSearchRouter} from '../../api/search/search-router.js';
 
 import {DEFAULT_PORT, MOCKS_FILE_NAME} from '../../constants.js';
 
-export const runServerCommand = {
+export const runApiCommand = {
   name: '--server',
   async run(portArg) {
     //TODO вынести все в одну функцию

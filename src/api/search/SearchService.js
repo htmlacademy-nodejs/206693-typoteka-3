@@ -1,5 +1,3 @@
-'use strict';
-
 export class SearchService {
   constructor(articles) {
     this._articles = articles;

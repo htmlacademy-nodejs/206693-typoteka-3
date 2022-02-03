@@ -1,21 +1,3 @@
-'use strict';
-
-const MOCKS_FILE_NAME = 'mocks.json';
-const DEFAULT_PORT = 8080;
-const HTTP_CODE = {
-  OK: 200,
-  CREATED: 201,
-  BAD_REQUEST: 400,
-  UNAUTHORIZED: 401,
-  FORBIDDEN: 403,
-  NOT_FOUND: 404,
-  INTERNAL_SERVER_ERROR: 500,
-};
-const MAX_ID_LENGTH = 6;
-
-export {
-  MOCKS_FILE_NAME,
-  DEFAULT_PORT,
-  HTTP_CODE,
-  MAX_ID_LENGTH,
-};
+export const MOCKS_FILE_NAME = 'mocks.json';
+export const DEFAULT_PORT = 8080;
+export const MAX_ID_LENGTH = 6;

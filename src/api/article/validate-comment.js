@@ -1,13 +1,11 @@
-'use strict';
-
-import {HTTP_CODE} from '../../../constants';
+import {constants as HTTP_CODES} from 'http2';
 
 export function validateComment(req, res, next) {
   const comment = req.body;
   if (validateCommentText(comment)) {
     next();
   } else {
-    res.status(HTTP_CODE.BAD_REQUEST);
+    res.status(HTTP_CODES.HTTP_STATUS_BAD_REQUEST);
     res.end();
   }
 }
