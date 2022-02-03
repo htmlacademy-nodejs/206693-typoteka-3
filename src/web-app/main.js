@@ -2,7 +2,7 @@
 
 import main from 'express';
 import path from 'path';
-import DEFAULT_PORT from '../constants.js'
+import DEFAULT_PORT from '../cli/constants.js'
 import mainRouter from './routers/main-router';
 import articlesRouter from './routers/articles-router';
 import myRouter from './routers/my-router';

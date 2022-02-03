@@ -10,4 +10,3 @@ export async function generateMocks(publicationNumber, maxIdLength, mocksFilePat
   const publications = await generator.generatePublications(publicationNumber);
   await fileManager.writeJsonFile(publications, mocksFilePath);
 }
-

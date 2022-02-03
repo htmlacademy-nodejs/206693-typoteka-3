@@ -1,8 +1,6 @@
-'use strict';
-
 import chalk from 'chalk';
 import {generateMocks} from '../../mock-generator/index.js';
-import {MOCKS_FILE_NAME, MAX_ID_LENGTH} from '../../constants.js';
+import {MOCKS_FILE_NAME, MAX_ID_LENGTH} from '../constants.js';
 
 const DEFAULT_COUNT_OF_PUBLICATIONS = 1;
 const MAX_COUNT_OF_PUBLICATIONS = 1000;

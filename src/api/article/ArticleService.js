@@ -1,8 +1,8 @@
-import {MAX_ID_LENGTH} from '../../constants.js';
 import {nanoid} from 'nanoid';
 
 export class ArticleService {
-  constructor(articles) {
+  constructor(articles, maxIdLength) {
+    this._maxIdLength = maxIdLength;
     this._articles = articles;
   }
 
@@ -16,7 +16,7 @@ export class ArticleService {
 
   create(articleData) {
     this._articles.push({
-      id: nanoid(MAX_ID_LENGTH), ...articleData
+      id: nanoid(this._maxIdLength), ...articleData
     });
   }
 
@@ -35,7 +35,7 @@ export class ArticleService {
   addComment(articleId, commentData) {
     const article = this.findById(articleId);
     article.comment.push({
-      id: nanoid(MAX_ID_LENGTH), ...commentData
+      id: nanoid(this._maxIdLength), ...commentData
     });
   }
 

@@ -1,5 +1,3 @@
-'use strict';
-
 import chalk from 'chalk';
 
 const TEMPLATE_HELP_COMMAND = `

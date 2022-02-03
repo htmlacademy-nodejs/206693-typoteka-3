@@ -8,10 +8,9 @@
     "test": "npm run eslint && npm run jest",
     "jest": "jest",
     "eslint": "eslint --ext .js src/",
-    "start": "nodemon src/cli/main.js",
+    "start-api": "node --experimental-specifier-resolution=node --use_strict src/cli/main.js --server",
     "start-web-app": "node src/web-app/main.js",
-    "generate-mocks": "node src/mock-generator/index.js 5 6 mocks.json",
-    "dev-server": "nodemon src/web-app/main.js"
+    "generate-mocks": "node --experimental-specifier-resolution=node --use_strict src/cli/main.js --generate 5"
   },
   "repository": {
     "type": "git",
