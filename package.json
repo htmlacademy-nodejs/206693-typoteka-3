@@ -1,14 +1,14 @@
 {
   "name": "typoteka-3",
   "version": "1.0.0",
-  "type": "module",
   "description": "Типотека",
   "main": "src/cli/main.js",
   "scripts": {
-    "test": "npm run eslint && npm run jest",
-    "jest": "jest",
+    "watch": "tsc -w",
+    "test": "npm run build && npm run jest ./out",
+    "jest": "jest ./out",
     "eslint": "eslint --ext .js src/",
-    "start-api": "node --experimental-specifier-resolution=node --use_strict src/cli/main.js --server",
+    "start-api": "node out/cli/main.js --server",
     "start-web-app": "node src/web-app/main.js",
     "generate-mocks": "node --experimental-specifier-resolution=node --use_strict src/cli/main.js --generate 5"
   },
@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/Jenia-b/206693-typoteka-3#readme",
   "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/supertest": "^2.0.11",
     "eslint": "7.32.0",
     "eslint-config-htmlacademy": "0.6.0",
     "jest": "27.4.7",

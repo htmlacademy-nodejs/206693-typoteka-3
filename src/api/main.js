@@ -21,11 +21,16 @@ export async function runApi(port, mockFileName, maxIdLength) {
   createArticleRouter(app, articleService);
   createSearchRouter(app, searchService);
 
-  app.listen(port, (error) => {
+  const server = app.listen(port, (error) => {
     if (error) {
       console.error(chalk.red(error));
     } else {
       console.info(chalk.green(`Server is listening on port: ${port}`));
     }
   });
+
+  return {
+    app: app,
+    server: server
+  };
 }
