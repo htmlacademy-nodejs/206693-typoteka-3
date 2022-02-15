@@ -1,4 +1,5 @@
 import {nanoid} from 'nanoid';
+import {ArticleNotFoundException} from './exceptions/ArticleNotFoundException';
 
 export class ArticleService {
   constructor(articles, maxIdLength) {

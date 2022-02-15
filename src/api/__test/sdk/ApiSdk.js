@@ -1,4 +1,5 @@
 import request from 'supertest';
+import {constants as HTTP_CODES} from 'http2';
 import {createApp} from '../../main';
 
 export class ApiSdk {
@@ -20,7 +21,8 @@ export class ApiSdk {
   }
 
   async getArticleById(id) {
-    return (await request(this.app).get(`/articles/${id}`)).body;
+    const response = await request(this.app).get(`/articles/${id}`);
+    return response.status !== HTTP_CODES.HTTP_STATUS_NOT_FOUND ? response.body : null;
   }
 
   addArticle(article) {

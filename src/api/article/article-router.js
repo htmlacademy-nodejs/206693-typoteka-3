@@ -2,6 +2,7 @@ import {constants as HTTP_CODES} from 'http2';
 import {Router} from 'express';
 import {validateArticle} from './validate-article.js';
 import {validateComment} from './validate-comment.js';
+import {ArticleNotFoundException} from './exceptions/ArticleNotFoundException';
 
 export function createArticleRouter(app, articleService) {
   const articlesRouter = new Router();
@@ -15,8 +16,13 @@ export function createArticleRouter(app, articleService) {
   articlesRouter.get(`/:articleId`, (req, res) => {
     const articleId = req.params.articleId;
     const article = articleService.findById(articleId);
-    res.status(HTTP_CODES.HTTP_STATUS_OK);
-    res.json(article);
+    if (article) {
+      res.status(HTTP_CODES.HTTP_STATUS_OK);
+      res.json(article);
+    } else {
+      res.status(HTTP_CODES.HTTP_STATUS_NOT_FOUND);
+      res.end();
+    }
   });
 
   articlesRouter.get(`/:articleId/comments`, (req, res) => {
