@@ -14,8 +14,8 @@ export class ApiSdk {
     });
   }
 
-  getAllCategories() {
-    return request(this.api.app).get('/categories');
+  async getAllCategories() {
+    return (await request(this.api.app).get('/categories')).body;
   }
 
   async getAllArticles() {

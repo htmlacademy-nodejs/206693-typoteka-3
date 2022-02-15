@@ -8,17 +8,11 @@ describe("Categories", () => {
     return sdk.start();
   });
 
-  it("Should return all categories", async () => {
-    const res = await sdk.getAllCategories();
-    expect(res.body).toEqual([
-      "Без рамки",
-      "За жизнь",
-      "За жизнь",
-      "IT"
-    ]);
+  it("Should have 0 categories when no article added", async () => {
+    expect(await sdk.getAllCategories()).toEqual([]);
   });
 
-  afterEach(() => {
-    return sdk.stop();
+  afterEach(async () => {
+    await sdk.stop();
   });
 });

@@ -5,6 +5,13 @@ export const programmingArticle = {
   category: "Программирование"
 }
 
+export const musicArticle = {
+  title: "Учим играть на укулеле, гитаре и балалайке",
+  announce: "Как начать действовать? Для начала просто соберитесь.",
+  fullText: "Как перестать беспокоиться и начать жить Как начать действовать?",
+  category: "Музыка"
+}
+
 export const articleWithNoTitle = {
   title: "",
   announce: "Как начать действовать? Для начала просто соберитесь.",
