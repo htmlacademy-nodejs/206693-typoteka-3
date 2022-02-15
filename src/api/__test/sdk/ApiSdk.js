@@ -18,8 +18,12 @@ export class ApiSdk {
     return request(this.api.app).get('/categories');
   }
 
-  getAllArticles() {
-    return request(this.api.app).get('/articles');
+  async getAllArticles() {
+    return (await request(this.api.app).get('/articles')).body;
+  }
+
+  async countAllArticles() {
+    return (await this.getAllArticles()).length;
   }
 
   getAllArticleById() {

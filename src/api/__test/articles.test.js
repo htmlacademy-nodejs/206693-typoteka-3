@@ -10,11 +10,11 @@ describe("Articles", () => {
   });
 
   it("Should have 0 articles when not added", async () => {
-    const initialArticleNumber = (await sdk.getAllArticles()).body.length;
+    const initialNumber = await sdk.countAllArticles();
     await sdk.addArticle(programmingArticle);
-    const resultingArticleNumber = (await sdk.getAllArticles()).body.length;
+    const resultingNumber = await sdk.countAllArticles();
 
-    expect(resultingArticleNumber - initialArticleNumber).toBe(1);
+    expect(resultingNumber - initialNumber).toBe(1);
   });
 
   it.todo("Should have all articles when added");
@@ -26,7 +26,7 @@ describe("Articles", () => {
   it.todo("Should return Bad Request Status when the updated article is not valid");
   it.todo("Should delete the article when requested");
 
-  afterEach(() => {
-    return sdk.stop();
+  afterEach(async () => {
+    await sdk.stop();
   });
 });
