@@ -12,7 +12,7 @@ export class MocksProvider {
     if (!this.#mocks) {
       this.#mocks = this.parseMocksFileContent(await this.readMocksFile(this.#mocksFilePath));
     }
-    return this.#mocks;
+    return [];
   }
 
   async readMocksFile(mocksFilePath) {
