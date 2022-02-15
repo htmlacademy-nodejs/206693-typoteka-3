@@ -19,8 +19,8 @@ export class ApiSdk {
     return (await this.getAllArticles()).length;
   }
 
-  getAllArticleById() {
-
+  async getArticleById(id) {
+    return (await request(this.app).get(`/articles/${id}`)).body;
   }
 
   addArticle(article) {

@@ -31,7 +31,14 @@ describe('Articles', () => {
     expect(resultingNumber - initialNumber).toBe(2);
   });
 
-  it.todo('Should return article by id when exists');
+  it('Should return article by id when exists', async () => {
+    await sdk.addArticle(programmingArticle);
+    const article = (await sdk.getAllArticles())[0];
+    const articleWithId = await sdk.getArticleById(article.id);
+
+    expect(articleWithId).toEqual(article);
+  });
+
   it.todo('!!! - Should do sth when the article requested by id is not added');
   it.todo('Should save the article when it\'s valid');
   it.todo('Should return Bad Request Status when the article is not valid');
