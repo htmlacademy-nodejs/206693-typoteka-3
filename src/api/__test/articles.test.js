@@ -4,9 +4,8 @@ import {musicArticle, programmingArticle} from './fixtures/article';
 describe("Articles", () => {
   let sdk;
 
-  beforeEach(() => {
-    sdk = new ApiSdk();
-    return sdk.start();
+  beforeEach(async() => {
+    sdk = await new ApiSdk().init();
   });
 
   it("Should have 0 articles when not added", async () => {
@@ -30,8 +29,4 @@ describe("Articles", () => {
   it.todo("Should save the updated article when it's valid");
   it.todo("Should return Bad Request Status when the updated article is not valid");
   it.todo("Should delete the article when requested");
-
-  afterEach(async () => {
-    await sdk.stop();
-  });
 });

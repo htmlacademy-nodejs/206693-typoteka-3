@@ -1,25 +1,18 @@
 import request from 'supertest';
-import {runApi} from '../../main';
+import {createApp} from '../../main';
 
 export class ApiSdk {
-  async start() {
-    this.api = await runApi(8081, 'mocks.json', 6);
-  }
-
-  async stop() {
-    return new Promise((resolve, reject) => {
-      this.api.server.close(() => {
-        resolve();
-      });
-    });
+  async init() {
+    this.app = await createApp(8081, 'mocks.json', 6);
+    return this;
   }
 
   async getAllCategories() {
-    return (await request(this.api.app).get('/categories')).body;
+    return (await request(this.app).get('/categories')).body;
   }
 
   async getAllArticles() {
-    return (await request(this.api.app).get('/articles')).body;
+    return (await request(this.app).get('/articles')).body;
   }
 
   async countAllArticles() {
@@ -31,7 +24,7 @@ export class ApiSdk {
   }
 
   addArticle(article) {
-    return request(this.api.app)
+    return request(this.app)
       .post('/articles')
       .set('Content-Type', 'application/json')
       .send(JSON.stringify(article));

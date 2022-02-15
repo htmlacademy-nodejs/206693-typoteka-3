@@ -9,6 +9,16 @@ import {createArticleRouter} from './article/article-router.js';
 import {createSearchRouter} from './search/search-router.js';
 
 export async function runApi(port, mockFileName, maxIdLength) {
+  createApp(port, mockFileName, maxIdLength).listen(port, (error) => {
+    if (error) {
+      console.error(chalk.red(error));
+    } else {
+      console.info(chalk.green(`Server is listening on port: ${port}`));
+    }
+  });
+}
+
+export async function createApp(port, mockFileName, maxIdLength) {
   const app = express();
   const mocksProvider = new MocksProvider(mockFileName);
   const mockData = await mocksProvider.getMockData();
@@ -21,16 +31,5 @@ export async function runApi(port, mockFileName, maxIdLength) {
   createArticleRouter(app, articleService);
   createSearchRouter(app, searchService);
 
-  const server = app.listen(port, (error) => {
-    if (error) {
-      console.error(chalk.red(error));
-    } else {
-      console.info(chalk.green(`Server is listening on port: ${port}`));
-    }
-  });
-
-  return {
-    app: app,
-    server: server
-  };
+  return app;
 }
